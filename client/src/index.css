@@ -15,11 +15,22 @@ body {
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-aksara-rose to-aksara-rose/90 text-white hover:from-aksara-rose/90 hover:to-aksara-rose shadow-md hover:shadow-lg;
+    background: linear-gradient(to right, #B6244F, rgba(182, 36, 79, 0.9));
+    @apply text-white shadow-md;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(to right, rgba(182, 36, 79, 0.9), #B6244F);
+    @apply shadow-lg;
   }
 
   .btn-secondary {
-    @apply bg-neutral-200 text-aksara-charcoal hover:bg-neutral-300;
+    background-color: #e8e4e1;
+    color: #504746;
+  }
+
+  .btn-secondary:hover {
+    background-color: #BFADA3;
   }
 
   .btn-danger {
@@ -31,19 +42,42 @@ body {
   }
 
   .btn-outline {
-    @apply border-2 border-aksara-rose text-aksara-rose hover:bg-aksara-rose hover:text-white;
+    border: 2px solid #B6244F;
+    color: #B6244F;
+  }
+
+  .btn-outline:hover {
+    background-color: #B6244F;
+    color: white;
   }
 
   .input {
-    @apply w-full px-3 py-2 border border-neutral-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-aksara-rose/20 focus:border-aksara-rose transition-colors;
+    @apply w-full px-3 py-2 rounded-lg bg-white transition-colors;
+    border: 1px solid #BFADA3;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: #B6244F;
+    box-shadow: 0 0 0 3px rgba(182, 36, 79, 0.1);
   }
 
   .select {
-    @apply w-full px-3 py-2 border border-neutral-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-aksara-rose/20 focus:border-aksara-rose transition-colors;
+    @apply w-full px-3 py-2 rounded-lg bg-white transition-colors;
+    border: 1px solid #BFADA3;
+  }
+
+  .select:focus {
+    outline: none;
+    border-color: #B6244F;
+    box-shadow: 0 0 0 3px rgba(182, 36, 79, 0.1);
   }
 
   .card {
-    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-neutral-200/50;
+    @apply rounded-xl shadow-sm;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(191, 173, 163, 0.3);
   }
 
   .badge {
@@ -59,11 +93,13 @@ body {
   }
 
   .badge-danger {
-    @apply bg-aksara-rose/10 text-aksara-rose;
+    background-color: rgba(182, 36, 79, 0.1);
+    color: #B6244F;
   }
 
   .badge-info {
-    @apply bg-aksara-taupe/20 text-aksara-charcoal;
+    background-color: rgba(184, 150, 133, 0.2);
+    color: #504746;
   }
 
   .badge-gray {
@@ -91,14 +127,17 @@ body {
 
   /* Table styles */
   .table-aksara th {
-    @apply bg-gradient-to-r from-aksara-charcoal to-aksara-charcoal/90 text-white text-left px-4 py-3 text-sm font-semibold;
+    background: linear-gradient(to right, #504746, rgba(80, 71, 70, 0.9));
+    @apply text-white text-left px-4 py-3 text-sm font-semibold;
   }
 
   .table-aksara td {
-    @apply px-4 py-3 text-sm text-aksara-charcoal border-b border-neutral-100;
+    @apply px-4 py-3 text-sm border-b;
+    color: #504746;
+    border-color: rgba(191, 173, 163, 0.3);
   }
 
   .table-aksara tr:hover td {
-    @apply bg-aksara-blush/10;
+    background-color: rgba(251, 183, 192, 0.1);
   }
 }
