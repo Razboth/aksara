@@ -83,8 +83,7 @@ function BudgetProgressBar({ vendor, budget, actual, color }) {
 }
 
 export default function Dashboard() {
-  const currentYear = new Date().getFullYear();
-  const [year, setYear] = useState(currentYear);
+  const [year, setYear] = useState(2025);
 
   const { data: summary, isLoading: summaryLoading } = useQuery({
     queryKey: ['dashboard-summary', year],
