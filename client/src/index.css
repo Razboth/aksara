@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: linear-gradient(135deg, #faf9f8 0%, rgba(191, 173, 163, 0.1) 100%);
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-aksara-rose to-aksara-rose/90 text-white hover:from-aksara-rose/90 hover:to-aksara-rose shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply bg-neutral-200 text-aksara-charcoal hover:bg-neutral-300;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white hover:bg-red-600;
+  }
+
+  .btn-success {
+    @apply bg-emerald-500 text-white hover:bg-emerald-600;
+  }
+
+  .btn-outline {
+    @apply border-2 border-aksara-rose text-aksara-rose hover:bg-aksara-rose hover:text-white;
+  }
+
+  .input {
+    @apply w-full px-3 py-2 border border-neutral-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-aksara-rose/20 focus:border-aksara-rose transition-colors;
+  }
+
+  .select {
+    @apply w-full px-3 py-2 border border-neutral-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-aksara-rose/20 focus:border-aksara-rose transition-colors;
+  }
+
+  .card {
+    @apply bg-white/80 backdrop-blur-sm rounded-xl shadow-sm border border-neutral-200/50;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-emerald-100 text-emerald-800;
+  }
+
+  .badge-warning {
+    @apply bg-amber-100 text-amber-800;
+  }
+
+  .badge-danger {
+    @apply bg-aksara-rose/10 text-aksara-rose;
+  }
+
+  .badge-info {
+    @apply bg-aksara-taupe/20 text-aksara-charcoal;
+  }
+
+  .badge-gray {
+    @apply bg-neutral-100 text-neutral-700;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f5f3f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #B89685;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #504746;
+  }
+
+  /* Table styles */
+  .table-aksara th {
+    @apply bg-gradient-to-r from-aksara-charcoal to-aksara-charcoal/90 text-white text-left px-4 py-3 text-sm font-semibold;
+  }
+
+  .table-aksara td {
+    @apply px-4 py-3 text-sm text-aksara-charcoal border-b border-neutral-100;
+  }
+
+  .table-aksara tr:hover td {
+    @apply bg-aksara-blush/10;
+  }
+}
