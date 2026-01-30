@@ -1,6 +1,6 @@
 -- ============================================================================
--- SEED DATA FOR SISTEM ANGGARAN DIVISI TI
--- Source: Excel files from Bank SulutGo IT Division
+-- AKSARA - Seed Data from Rekap Pembayaran Tagihan 2025.xls
+-- Bank SulutGo - Divisi Teknologi Informasi
 -- ============================================================================
 
 -- Clear existing data
@@ -15,21 +15,7 @@ DELETE FROM gl_accounts;
 DELETE FROM settings;
 
 -- ============================================================================
--- 1. VENDORS (SUPPLIER/MITRA)
--- ============================================================================
-INSERT INTO vendors (id, name, short_name, color, contact_person, email, phone, address, npwp) VALUES
-(1, 'PT. Collega Inti Pratama', 'Collega', '#F59E0B', 'Admin Collega', 'admin@collega.co.id', '021-12345678', 'Jakarta', '01.234.567.8-012.000'),
-(2, 'PT. Artajasa Pembayaran Elektronis', 'Artajasa', '#10B981', 'Admin Artajasa', 'admin@artajasa.co.id', '021-87654321', 'Jakarta', '02.345.678.9-012.000'),
-(3, 'PT. Lintasarta', 'Lintasarta', '#3B82F6', 'Admin Lintasarta', 'admin@lintasarta.co.id', '021-11223344', 'Jakarta', '03.456.789.0-012.000'),
-(4, 'PT. Metalogix', 'Metalogix', '#8B5CF6', 'Admin Metalogix', 'admin@metalogix.co.id', '021-22334455', 'Jakarta', '04.567.890.1-012.000'),
-(5, 'PT. eMobile Indonesia', 'eMobile', '#EC4899', 'Admin eMobile', 'admin@emobile.co.id', '021-33445566', 'Jakarta', '05.678.901.2-012.000'),
-(6, 'PT. Metrocom', 'Metrocom', '#14B8A6', 'Admin Metrocom', 'admin@metrocom.co.id', '021-44556677', 'Jakarta', '06.789.012.3-012.000'),
-(7, 'PT. SPS', 'SPS', '#F97316', 'Admin SPS', 'admin@sps.co.id', '021-55667788', 'Jakarta', '07.890.123.4-012.000'),
-(8, 'PT. Tangara', 'Tangara', '#06B6D4', 'Admin Tangara', 'admin@tangara.co.id', '021-66778899', 'Jakarta', '08.901.234.5-012.000'),
-(9, 'PT. Telkomsat', 'Telkomsat', '#84CC16', 'Admin Telkomsat', 'admin@telkomsat.co.id', '021-77889900', 'Jakarta', '09.012.345.6-012.000');
-
--- ============================================================================
--- 2. GL ACCOUNTS (CHART OF ACCOUNTS)
+-- 1. GL ACCOUNTS
 -- ============================================================================
 INSERT INTO gl_accounts (id, code, name, category) VALUES
 (1, '5400102', 'Biaya Sewa IT', 'Operating Expense'),
@@ -37,204 +23,190 @@ INSERT INTO gl_accounts (id, code, name, category) VALUES
 (3, '5480104', 'Beban Transaksi E-Channel', 'Operating Expense');
 
 -- ============================================================================
--- 3. SERVICES (LAYANAN)
+-- 2. VENDORS
+-- ============================================================================
+INSERT INTO vendors (id, name, short_name, color, contact_person, email, phone, address, npwp) VALUES
+(1, 'PT. Collega Inti Pratama', 'CIP', '#B6244F', 'Admin CIP', 'admin@collega.co.id', '021-12345678', 'Jakarta', '01.234.567.8-012.000'),
+(2, 'PT. Artajasa Pembayaran Elektronis', 'Artajasa', '#504746', 'Shirke W.', 'admin@artajasa.co.id', '021-87654321', 'Jakarta', '02.345.678.9-012.000'),
+(3, 'PT. Aplikanusa Lintasarta', 'Lintasarta', '#B89685', 'Admin Lintasarta', 'admin@lintasarta.co.id', '021-11223344', 'Jakarta', '03.456.789.0-012.000'),
+(4, 'PT. eMobile Indonesia', 'eMobile', '#FBB7C0', 'Admin eMobile', 'admin@emobile.co.id', '021-33445566', 'Jakarta', '04.567.890.1-012.000'),
+(5, 'PT. Strategic Partner Solution', 'SPS', '#BFADA3', 'Admin SPS', 'admin@sps.co.id', '021-55667788', 'Jakarta', '05.678.901.2-012.000'),
+(6, 'PT. Metrocom Global Solusi', 'Metrocom', '#14B8A6', 'Admin Metrocom', 'admin@metrocom.co.id', '021-44556677', 'Jakarta', '06.789.012.3-012.000');
+
+-- ============================================================================
+-- 3. SERVICES
 -- ============================================================================
 INSERT INTO services (id, vendor_id, name, description, monthly_fee, type, gl_account_id, is_active) VALUES
--- PT. Collega Inti Pratama Services
-(1, 1, 'Jasa Outsourcing Aplikasi Corebanking Sistem OLIBS 724', 'Layanan core banking system termasuk DC dan DRC', 1024000000, 'Software', 1, 1),
-(2, 1, 'Jasa Outsourcing Aplikasi MIS/Data Warehouse', 'Layanan MIS dan Data Warehouse', 117000000, 'Software', 1, 1),
-(3, 1, 'Layanan Sistem Aplikasi PSAK 71', 'Aplikasi untuk pelaporan PSAK 71', 67000000, 'Software', 1, 1),
-(4, 1, 'Layanan Aplikasi Mobile Banking (BSGtouch)', 'Aplikasi mobile banking', 15000000, 'Software', 1, 1),
-(5, 1, 'Layanan Aplikasi APU PPT', 'Aplikasi Anti Pencucian Uang', 15000000, 'Software', 1, 1),
+-- CIP Services
+(1, 1, 'Core Banking System OLIBS 724', 'Jasa Outsourcing Corebanking System + DC/DRC', 1019500000, 'Software', 1, 1),
+(2, 1, 'MIS/Data Warehouse', 'Jasa Outsourcing Hardware dan Software Data Warehouse + Sewa Aplikasi MIS', 117000000, 'Software', 1, 1),
+(3, 1, 'PSAK 71', 'Biaya Outsourcing DC/DRC aplikasi PSAK 71', 67000000, 'Software', 1, 1),
+(4, 1, 'APU PPT', 'Biaya Sewa Aplikasi APU PPT', 20000000, 'Software', 1, 1),
+(5, 1, 'Mobile Banking BSGtouch', 'Biaya Outsourcing DC/DRC aplikasi Mobile Banking', 95000000, 'Software', 1, 1),
 
--- PT. Artajasa Services
-(6, 2, 'ATM Bersama', 'Layanan jaringan ATM Bersama', 20000000, 'Network', 1, 1),
-(7, 2, 'BI-FAST', 'Layanan BI-FAST real-time payment', 0, 'Network', 3, 1),
+-- Artajasa Services
+(6, 2, 'ATM Bersama', 'Layanan ATM Bersama bulanan', 20000000, 'Network', 1, 1),
+(7, 2, 'BI FAST', 'Layanan BI FAST transaksi bulanan', 130000000, 'Network', 3, 1),
 
--- PT. Lintasarta Services (Cloud)
-(8, 3, 'Cloud Server - Surrounding', 'Cloud server untuk aplikasi surrounding (8 servers)', 39650000, 'Infrastructure', 1, 1),
-(9, 3, 'Cloud Server - DEKA DBAAS', 'Database as a Service', 9900000, 'Infrastructure', 1, 1),
-(10, 3, 'Cloud Server - DEKA BOX', 'Storage service', 4000000, 'Infrastructure', 1, 1),
-(11, 3, 'Cloud Server - SKAI', 'Server untuk aplikasi SKAI', 5855856, 'Infrastructure', 1, 1),
-(12, 3, 'Cloud Server - HCMS', 'Server untuk HCMS', 5405405, 'Infrastructure', 1, 1),
-(13, 3, 'Cloud Server - Umum', 'Server untuk aplikasi umum (6 servers)', 28000000, 'Infrastructure', 1, 1),
-(14, 3, 'Cloud Server - Pelaporan Regulasi', 'Server untuk pelaporan OJK', 9000000, 'Infrastructure', 1, 1),
-(15, 3, 'Cloud Server - ELOS', 'Server aplikasi ELOS (5 servers)', 32000000, 'Infrastructure', 1, 1),
-(16, 3, 'Cloud Server - ELOS Dev', 'Server development ELOS', 15000000, 'Infrastructure', 1, 1),
-(17, 3, 'Cloud Server - Testing', 'Server untuk testing', 7850000, 'Infrastructure', 1, 1),
+-- Lintasarta Services
+(8, 3, 'Cloud Switching', 'Cloud Switching Server + Collocation', 158333333, 'Infrastructure', 1, 1),
+(9, 3, 'Cloud eLos', 'Cloud eLos Dev, Deka Box, DBaaS, Harbor, Service Portal', 234411261, 'Infrastructure', 1, 1),
+(10, 3, 'Managed HSM', 'Managed Device HSM', 54833333, 'Security', 1, 1),
 
--- PT. Lintasarta Services (Datacom)
-(18, 3, 'IPVPN DC Sentul', 'Koneksi IPVPN ke DC Sentul (Backhaul, BI, MPN, Artajasa, Alto, DJP)', 30400000, 'Network', 2, 1),
-(19, 3, 'Dedicated Internet DC Sentul', 'Internet untuk DC Sentul', 10000000, 'Network', 2, 1),
-(20, 3, 'IPVPN DRC Serpong', 'Koneksi IPVPN ke DRC Serpong (Backhaul, Artajasa, Alto, Finnet, MPN, DJP)', 24200000, 'Network', 2, 1),
-(21, 3, 'Dedicated Internet DRC Serpong', 'Internet untuk DRC Serpong', 4590909, 'Network', 2, 1),
-(22, 3, 'IPVPN DC Tekno', 'Koneksi IPVPN ke DC Tekno', 16300000, 'Network', 2, 1),
-(23, 3, 'Colocation DC Tekno & Jatiluhur', 'Colocation di 2 lokasi', 24000000, 'Infrastructure', 1, 1),
-(24, 3, 'Metro Ethernet DC-DRC', 'Koneksi Metro Ethernet antar DC', 6500000, 'Network', 2, 1),
+-- eMobile Services
+(11, 4, 'SMS/USSD Gateway', 'Layanan SMS/USSD Gateway, SMS Push dan USSD Mobile Banking', 18750000, 'Network', 1, 1),
 
--- PT. Lintasarta Services (Security)
-(25, 3, 'Managed SOC 200 MPS', 'Security Operation Center dengan LogRhythm', 42000000, 'Security', 1, 1),
-(26, 3, 'Managed WAF on Cloud', 'Web Application Firewall untuk multiple apps', 5000000, 'Security', 1, 1),
+-- SPS Services
+(12, 5, 'E-Learning', 'Cloud Server dan Annual Maintenance E-Learning', 0, 'Software', 1, 1),
 
--- PT. Metalogix Services
-(27, 4, 'Switching XLINK', 'Layanan switching XLINK', 811446000, 'Software', 1, 1),
-
--- PT. eMobile Services
-(28, 5, 'SMS/USSD Gateway', 'Layanan SMS dan USSD Gateway untuk mobile banking', 18750000, 'Network', 1, 1),
-
--- PT. Metrocom Services
-(29, 6, 'FDS (Fraud Detection System)', 'Sistem deteksi fraud', 0, 'Software', 1, 1),
-
--- PT. SPS Services
-(30, 7, 'Cloud Server E-Learning', 'Server untuk e-learning', 41325300, 'Infrastructure', 1, 1),
-(31, 7, 'Annual Maintenance E-Learning', 'Maintenance aplikasi e-learning', 80000000, 'Software', 1, 1),
-
--- PT. Tangara Services
-(32, 8, 'Data Comm Tangara', 'Layanan komunikasi data Tangara', 0, 'Network', 2, 1),
-
--- PT. Telkomsat Services
-(33, 9, 'Data Comm Telkomsat', 'Layanan komunikasi data via satelit', 0, 'Network', 2, 1);
+-- Metrocom Services
+(13, 6, 'FDS', 'Fraud Detection System Implementation', 0, 'Security', 1, 1);
 
 -- ============================================================================
--- 4. BUDGETS (ANGGARAN) - 2025
+-- 4. BUDGETS 2025
 -- ============================================================================
 INSERT INTO budgets (id, year, vendor_id, budget_amount, description) VALUES
-(1, 2025, 1, 15000000000, 'Anggaran PT. Collega Inti Pratama 2025'),
-(2, 2025, 2, 2000000000, 'Anggaran PT. Artajasa 2025'),
-(3, 2025, 3, 6000000000, 'Anggaran PT. Lintasarta 2025'),
-(4, 2025, 4, 2000000000, 'Anggaran PT. Metalogix 2025'),
-(5, 2025, 5, 300000000, 'Anggaran PT. eMobile 2025'),
-(6, 2025, 6, 2000000000, 'Anggaran PT. Metrocom 2025'),
-(7, 2025, 7, 200000000, 'Anggaran PT. SPS 2025');
+(1, 2025, 1, 17622810000, 'CIP - CBS, DC-DRC, MIS, PSAK71, APU-PPT, Mobile Banking'),
+(2, 2025, 2, 1750000000, 'Artajasa - ATM Bersama + BI FAST'),
+(3, 2025, 3, 6000000000, 'Lintasarta - Cloud Server'),
+(4, 2025, 4, 250000000, 'eMobile - SMS/USSD Gateway'),
+(5, 2025, 5, 125000000, 'SPS - E-Learning'),
+(6, 2025, 6, 1900000000, 'Metrocom - FDS');
 
 -- ============================================================================
--- 5. TRANSACTIONS (TAGIHAN/INVOICE) - 2025
+-- 5. TRANSACTIONS - CIP (PT. Collega Inti Pratama) 2025
 -- ============================================================================
-
--- PT. Collega Inti Pratama - Corebanking OLIBS 2025
-INSERT INTO transactions (id, vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, received_date, memo_date, pay_date, notes) VALUES
-(1, 1, 1, 'INV-CIP-CB-2025-01', '2025-01', 1024000000, 39600000, 1131645000, 'paid', '2025-01-16', '2025-02-16', '2025-02-04', '2025-02-05', '2025-02-05', 'Corebanking Januari 2025'),
-(2, 1, 1, 'INV-CIP-CB-2025-02', '2025-02', 1024000000, 112145000, 1131645000, 'paid', '2025-02-17', '2025-03-17', '2025-02-26', '2025-04-08', '2025-04-08', 'Corebanking Februari 2025'),
-(3, 1, 1, 'INV-CIP-CB-2025-03', '2025-03', 1024000000, 112145000, 1131645000, 'paid', '2025-03-17', '2025-04-17', '2025-03-24', '2025-04-08', '2025-04-08', 'Corebanking Maret 2025'),
-(4, 1, 1, 'INV-CIP-CB-2025-04', '2025-04', 1024000000, 112145000, 1131645000, 'paid', '2025-04-16', '2025-05-16', '2025-04-30', '2025-05-02', '2025-05-02', 'Corebanking April 2025'),
-(5, 1, 1, 'INV-CIP-CB-2025-05', '2025-05', 1024000000, 112145000, 1131645000, 'paid', '2025-05-16', '2025-06-16', '2025-05-22', '2025-05-27', '2025-05-27', 'Corebanking Mei 2025'),
-(6, 1, 1, 'INV-CIP-CB-2025-06', '2025-06', 1024000000, 112640000, 1136640000, 'paid', '2025-06-16', '2025-07-16', '2025-06-25', '2025-06-30', '2025-06-30', 'Corebanking Juni 2025'),
-(7, 1, 1, 'INV-CIP-CB-2025-07', '2025-07', 1024000000, 112640000, 1136640000, 'paid', '2025-07-16', '2025-08-16', '2025-07-22', '2025-08-01', '2025-08-01', 'Corebanking Juli 2025'),
-(8, 1, 1, 'INV-CIP-CB-2025-08', '2025-08', 1024000000, 112640000, 1136640000, 'paid', '2025-08-19', '2025-09-19', '2025-08-25', '2025-09-02', '2025-09-02', 'Corebanking Agustus 2025'),
-(9, 1, 1, 'INV-CIP-CB-2025-09', '2025-09', 1024000000, 112640000, 1136640000, 'paid', '2025-09-16', '2025-10-16', '2025-09-22', '2025-09-29', '2025-09-29', 'Corebanking September 2025'),
-(10, 1, 1, 'INV-CIP-CB-2025-10', '2025-10', 1024000000, 112640000, 1136640000, 'paid', '2025-10-16', '2025-11-16', '2025-10-20', '2025-10-27', '2025-10-27', 'Corebanking Oktober 2025'),
-(11, 1, 1, 'INV-CIP-CB-2025-11', '2025-11', 1024000000, 112640000, 1136640000, 'paid', '2025-11-17', '2025-12-17', '2025-11-21', '2025-11-27', '2025-11-27', 'Corebanking November 2025'),
-(12, 1, 1, 'INV-CIP-CB-2025-12', '2025-12', 1024000000, 112640000, 1136640000, 'paid', '2025-12-16', '2026-01-16', '2025-12-24', '2025-12-24', '2025-12-24', 'Corebanking Desember 2025'),
-
--- PT. Artajasa - ATM Bersama 2025
-(13, 2, 6, 'INV-ART-ATM-2025-01', '2025-01', 20000000, 2200000, 22200000, 'paid', '2025-01-20', '2025-02-20', NULL, '2025-03-25', '2025-03-25', 'ATM Bersama Januari 2025'),
-(14, 2, 6, 'INV-ART-ATM-2025-02', '2025-02', 20000000, 2200000, 22200000, 'paid', '2025-02-20', '2025-03-20', NULL, '2025-03-25', '2025-03-25', 'ATM Bersama Februari 2025'),
-(15, 2, 6, 'INV-ART-ATM-2025-03', '2025-03', 20000000, 2200000, 22200000, 'paid', '2025-03-20', '2025-04-20', NULL, '2025-04-16', '2025-04-16', 'ATM Bersama Maret 2025'),
-(16, 2, 6, 'INV-ART-ATM-2025-04', '2025-04', 20000000, 2200000, 22200000, 'paid', '2025-04-21', '2025-05-21', NULL, '2025-05-14', '2025-05-14', 'ATM Bersama April 2025'),
-(17, 2, 6, 'INV-ART-ATM-2025-05', '2025-05', 20000000, 2200000, 22200000, 'paid', '2025-05-20', '2025-06-20', NULL, '2025-06-13', '2025-06-13', 'ATM Bersama Mei 2025'),
-(18, 2, 6, 'INV-ART-ATM-2025-06', '2025-06', 20000000, 2200000, 22200000, 'paid', '2025-06-20', '2025-07-20', NULL, '2025-07-07', '2025-07-07', 'ATM Bersama Juni 2025'),
-(19, 2, 6, 'INV-ART-ATM-2025-07', '2025-07', 20000000, 2200000, 22200000, 'paid', '2025-07-20', '2025-08-20', NULL, '2025-08-19', '2025-08-19', 'ATM Bersama Juli 2025'),
-(20, 2, 6, 'INV-ART-ATM-2025-08', '2025-08', 20000000, 2200000, 22200000, 'paid', '2025-08-20', '2025-09-20', NULL, '2025-09-29', '2025-09-29', 'ATM Bersama Agustus 2025'),
-(21, 2, 6, 'INV-ART-ATM-2025-09', '2025-09', 20000000, 2200000, 22200000, 'paid', '2025-09-20', '2025-10-20', NULL, '2025-10-02', '2025-10-02', 'ATM Bersama September 2025'),
-(22, 2, 6, 'INV-ART-ATM-2025-10', '2025-10', 20000000, 2200000, 22200000, 'paid', '2025-10-20', '2025-11-20', NULL, '2025-11-03', '2025-11-03', 'ATM Bersama Oktober 2025'),
-(23, 2, 6, 'INV-ART-ATM-2025-11', '2025-11', 20000000, 2200000, 22200000, 'paid', '2025-11-20', '2025-12-20', NULL, '2025-12-16', '2025-12-16', 'ATM Bersama November 2025'),
-(24, 2, 6, 'INV-ART-ATM-2025-12', '2025-12', 20000000, 2200000, 22200000, 'paid', '2025-12-20', '2026-01-20', NULL, '2025-12-24', '2025-12-24', 'ATM Bersama Desember 2025'),
-
--- PT. Artajasa - BI-FAST 2025 (Variable amounts based on transactions)
-(25, 2, 7, 'INV-ART-BIFAST-2025-01', '2025-01', 131019600, 14412156, 145431756, 'paid', '2025-01-31', '2025-02-28', '2025-02-18', '2025-02-19', '2025-02-19', 'BI-FAST Januari 2025'),
-(26, 2, 7, 'INV-ART-BIFAST-2025-02', '2025-02', 138758400, 15263424, 154021824, 'paid', '2025-02-28', '2025-03-28', '2025-03-26', '2025-04-08', '2025-04-08', 'BI-FAST Februari 2025'),
-(27, 2, 7, 'INV-ART-BIFAST-2025-03', '2025-03', 158587200, 17444592, 176031792, 'paid', '2025-03-31', '2025-04-30', '2025-04-25', '2025-04-28', '2025-04-28', 'BI-FAST Maret 2025'),
-(28, 2, 7, 'INV-ART-BIFAST-2025-06', '2025-06', 25864200, 2845062, 28709262, 'paid', '2025-06-30', '2025-07-30', '2025-07-22', '2025-08-01', '2025-08-01', 'BI-FAST Juni 2025'),
-(29, 2, 7, 'INV-ART-BIFAST-2025-07', '2025-07', 114871200, 12635832, 127507032, 'paid', '2025-07-31', '2025-08-31', '2025-09-29', '2025-10-02', '2025-10-02', 'BI-FAST Juli 2025'),
-(30, 2, 7, 'INV-ART-BIFAST-2025-08', '2025-08', 111104400, 12221484, 123325884, 'paid', '2025-08-31', '2025-09-30', '2025-09-16', '2025-09-17', '2025-09-17', 'BI-FAST Agustus 2025'),
-(31, 2, 7, 'INV-ART-BIFAST-2025-09', '2025-09', 116949600, 12864456, 129814056, 'paid', '2025-09-30', '2025-10-30', '2025-10-14', '2025-10-15', '2025-10-15', 'BI-FAST September 2025'),
-(32, 2, 7, 'INV-ART-BIFAST-2025-10', '2025-10', 122172600, 13438986, 135611586, 'paid', '2025-10-31', '2025-11-30', '2025-11-17', '2025-11-27', '2025-11-27', 'BI-FAST Oktober 2025'),
-(33, 2, 7, 'INV-ART-BIFAST-2025-11', '2025-11', 113245800, 12457038, 125702838, 'paid', '2025-11-30', '2025-12-30', '2025-12-24', '2025-12-30', '2025-12-30', 'BI-FAST November 2025'),
-(34, 2, 7, 'INV-ART-BIFAST-2025-12', '2025-12', 158433000, 17427630, 175860630, 'pending', '2025-12-31', '2026-01-30', '2026-01-14', NULL, NULL, 'BI-FAST Desember 2025 - Menunggu pembayaran'),
-
--- PT. eMobile - SMS/USSD Gateway 2025
-(35, 5, 28, 'INV-EMB-2025-01', '2025-01', 18750000, 2062500, 20812500, 'paid', '2025-01-13', '2025-02-13', '2025-01-07', NULL, '2025-01-20', 'SMS/USSD Gateway Jan-Feb 2025'),
-(36, 5, 28, 'INV-EMB-2025-02', '2025-02', 18750000, 2062500, 20812500, 'paid', '2025-02-13', '2025-03-13', '2025-02-04', NULL, '2025-02-15', 'SMS/USSD Gateway Feb-Mar 2025'),
-(37, 5, 28, 'INV-EMB-2025-03', '2025-03', 18750000, 2062500, 20812500, 'paid', '2025-03-13', '2025-04-13', '2025-02-04', NULL, '2025-03-20', 'SMS/USSD Gateway Mar-Apr 2025'),
-(38, 5, 28, 'INV-EMB-2025-04', '2025-04', 18750000, 2062500, 20812500, 'paid', '2025-04-13', '2025-05-13', '2025-04-10', NULL, '2025-04-25', 'SMS/USSD Gateway Apr-May 2025'),
-(39, 5, 28, 'INV-EMB-2025-05', '2025-05', 18750000, 2062500, 20812500, 'paid', '2025-05-13', '2025-06-13', '2025-05-02', NULL, '2025-05-20', 'SMS/USSD Gateway May-Jun 2025'),
-(40, 5, 28, 'INV-EMB-2025-06', '2025-06', 18750000, 2062500, 20812500, 'paid', '2025-06-13', '2025-07-13', '2025-06-03', NULL, '2025-06-25', 'SMS/USSD Gateway Jun-Jul 2025'),
-(41, 5, 28, 'INV-EMB-2025-07', '2025-07', 18750000, 2062500, 20812500, 'paid', '2025-07-13', '2025-08-13', '2025-07-01', NULL, '2025-07-20', 'SMS/USSD Gateway Jul-Aug 2025'),
-(42, 5, 28, 'INV-EMB-2025-08', '2025-08', 18750000, 2062500, 20812500, 'paid', '2025-08-13', '2025-09-13', '2025-08-04', NULL, '2025-08-25', 'SMS/USSD Gateway Aug-Sep 2025'),
-(43, 5, 28, 'INV-EMB-2025-09', '2025-09', 18750000, 2062500, 20812500, 'paid', '2025-09-13', '2025-10-13', '2025-09-02', NULL, '2025-09-20', 'SMS/USSD Gateway Sep-Oct 2025'),
-(44, 5, 28, 'INV-EMB-2025-10', '2025-10', 18750000, 2062500, 20812500, 'paid', '2025-10-13', '2025-11-13', '2025-10-02', NULL, '2025-10-20', 'SMS/USSD Gateway Oct-Nov 2025'),
-(45, 5, 28, 'INV-EMB-2025-11', '2025-11', 18750000, 2062500, 20812500, 'paid', '2025-11-13', '2025-12-13', '2025-11-04', NULL, '2025-11-20', 'SMS/USSD Gateway Nov-Dec 2025'),
-(46, 5, 28, 'INV-EMB-2025-12', '2025-12', 18750000, 2062500, 20812500, 'paid', '2025-12-13', '2026-01-13', '2025-12-01', NULL, '2025-12-20', 'SMS/USSD Gateway Dec-Jan 2025'),
-
--- PT. Lintasarta - Cloud Server 2025
-(47, 3, 8, 'INV-LA-CLOUD-2025-01', '2025-01', 28900000, 3179000, 32079000, 'paid', '2025-01-15', '2025-02-15', NULL, NULL, '2025-02-10', 'Cloud Server Januari 2025'),
-(48, 3, 8, 'INV-LA-CLOUD-2025-0102', '2025-01', 305161261, 33567739, 338728999, 'paid', '2025-01-20', '2025-02-20', NULL, NULL, '2025-02-25', 'Cloud Server Jan-Feb 2025'),
-(49, 3, 8, 'INV-LA-CLOUD-2025-0203', '2025-02', 255598761, 28115864, 283714625, 'paid', '2025-02-15', '2025-03-15', NULL, NULL, '2025-03-20', 'Cloud Server Feb-Mar 2025'),
-(50, 3, 8, 'INV-LA-CLOUD-2025-0304', '2025-03', 234411261, 25785239, 260196500, 'paid', '2025-03-15', '2025-04-15', NULL, NULL, '2025-04-10', 'Cloud Server Mar-Apr 2025'),
-(51, 3, 8, 'INV-LA-CLOUD-2025-0405', '2025-04', 234411261, 25785239, 260196500, 'paid', '2025-04-15', '2025-05-15', NULL, NULL, '2025-05-10', 'Cloud Server Apr-May 2025'),
-(52, 3, 8, 'INV-LA-CLOUD-2025-0506', '2025-05', 234411261, 25785239, 260196500, 'paid', '2025-05-15', '2025-06-15', NULL, NULL, '2025-06-10', 'Cloud Server May-Jun 2025'),
-(53, 3, 8, 'INV-LA-CLOUD-2025-0607', '2025-06', 234411261, 25785239, 260196500, 'paid', '2025-06-15', '2025-07-15', NULL, NULL, '2025-07-10', 'Cloud Server Jun-Jul 2025'),
-(54, 3, 8, 'INV-LA-CLOUD-2025-0708', '2025-07', 234411261, 25785239, 260196500, 'paid', '2025-07-15', '2025-08-15', NULL, NULL, '2025-08-10', 'Cloud Server Jul-Aug 2025'),
-(55, 3, 8, 'INV-LA-CLOUD-2025-0809', '2025-08', 234411261, 25785239, 260196500, 'paid', '2025-08-15', '2025-09-15', NULL, NULL, '2025-09-10', 'Cloud Server Aug-Sep 2025'),
-(56, 3, 8, 'INV-LA-CLOUD-2025-0910', '2025-09', 169833333, 18681667, 188515000, 'paid', '2025-09-15', '2025-10-15', NULL, NULL, '2025-10-10', 'Cloud Server Sep-Oct 2025'),
-(57, 3, 8, 'INV-LA-CLOUD-2025-1011', '2025-10', 246411261, 27105239, 273516500, 'paid', '2025-10-15', '2025-11-15', NULL, NULL, '2025-11-10', 'Cloud Server Oct-Nov 2025'),
-(58, 3, 8, 'INV-LA-CLOUD-2025-1112', '2025-11', 246411261, 27105239, 273516500, 'paid', '2025-11-15', '2025-12-15', NULL, NULL, '2025-12-10', 'Cloud Server Nov-Dec 2025'),
-
--- PT. Metalogix - Switching XLINK 2025
-(59, 4, 27, 'INV-MLX-XLINK-2025-H1', '2025-01', 811446000, 89259060, 900705060, 'pending', '2025-01-15', '2025-02-15', NULL, NULL, NULL, 'Switching XLINK Tahun Ketiga - Semester I'),
-(60, 4, 27, 'INV-MLX-XLINK-2025-H2', '2025-07', 811446000, 89259060, 900705060, 'pending', '2025-07-15', '2025-08-15', NULL, NULL, NULL, 'Switching XLINK Tahun Ketiga - Semester II'),
-
--- PT. Metrocom - FDS 2025 (Project-based)
-(61, 6, 29, 'INV-MTC-FDS-2025-T1', '2025-06', 895000000, 0, 895000000, 'paid', '2025-05-15', '2025-06-15', NULL, NULL, '2025-06-12', 'FDS Termin I 50%'),
-(62, 6, 29, 'INV-MTC-FDS-2025-T2', '2025-09', 895000000, 0, 895000000, 'paid', '2025-08-15', '2025-09-15', NULL, NULL, '2025-09-04', 'FDS Termin II 50%'),
-(63, 6, 29, 'INV-MTC-FDS-2025-API', '2025-09', 36630000, 0, 36630000, 'paid', '2025-09-15', '2025-10-15', NULL, NULL, '2025-09-29', 'Biaya Jasa Implementasi FDS API');
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+-- Januari (CBS, MIS, PSAK71, Mobile Banking)
+(1, 1, 'CIP/2025/01', '2025-01', 1218500000, 134035000, 1352535000, 'paid', '2025-01-13', '2025-02-12', '2025-02-05', '2025-02-07', 'CBS, MIS, PSAK71, Mobile Banking - Januari'),
+-- Februari (+APU PPT)
+(1, 1, 'CIP/2025/02', '2025-02', 1238500000, 136235000, 1374735000, 'paid', '2025-02-14', '2025-03-16', '2025-04-08', '2025-04-11', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Februari'),
+-- Maret
+(1, 1, 'CIP/2025/03', '2025-03', 1238500000, 136235000, 1374735000, 'paid', '2025-03-13', '2025-04-12', '2025-04-08', '2025-04-15', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Maret'),
+-- April
+(1, 1, 'CIP/2025/04', '2025-04', 1238500000, 136235000, 1374735000, 'paid', '2025-04-13', '2025-05-13', '2025-05-02', '2025-05-09', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - April'),
+-- Mei
+(1, 1, 'CIP/2025/05', '2025-05', 1238500000, 136235000, 1374735000, 'paid', '2025-05-13', '2025-06-12', '2025-05-27', '2025-06-04', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Mei'),
+-- Juni (new rate)
+(1, 1, 'CIP/2025/06', '2025-06', 1243000000, 136730000, 1379730000, 'paid', '2025-06-13', '2025-07-13', '2025-06-30', '2025-07-09', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Juni'),
+-- Juli
+(1, 1, 'CIP/2025/07', '2025-07', 1243000000, 136730000, 1379730000, 'paid', '2025-07-13', '2025-08-12', '2025-08-01', '2025-08-08', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Juli'),
+-- Agustus (Mobile Banking increase to 95M)
+(1, 1, 'CIP/2025/08', '2025-08', 1323000000, 145530000, 1468530000, 'paid', '2025-08-18', '2025-09-17', '2025-09-02', '2025-09-21', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Agustus'),
+-- September
+(1, 1, 'CIP/2025/09', '2025-09', 1323000000, 145530000, 1468530000, 'paid', '2025-09-16', '2025-10-16', '2025-09-29', '2025-09-30', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - September'),
+-- Oktober
+(1, 1, 'CIP/2025/10', '2025-10', 1323000000, 145530000, 1468530000, 'paid', '2025-10-16', '2025-11-15', '2025-10-27', '2025-11-11', 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Oktober'),
+-- November (pending)
+(1, 1, 'CIP/2025/11', '2025-11', 1323000000, 145530000, 1468530000, 'pending', '2025-11-15', '2025-12-15', NULL, NULL, 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - November'),
+-- Desember (pending)
+(1, 1, 'CIP/2025/12', '2025-12', 1323000000, 145530000, 1468530000, 'pending', '2025-12-15', '2026-01-14', NULL, NULL, 'CBS, MIS, PSAK71, APU-PPT, Mobile Banking - Desember');
 
 -- ============================================================================
--- 6. SETTINGS (PENGATURAN APLIKASI)
+-- 6. TRANSACTIONS - Artajasa ATM Bersama 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+(2, 6, 'AJ/ATM/2025/01', '2025-01', 20000000, 2200000, 22200000, 'paid', '2025-01-17', '2025-02-16', '2025-03-25', '2025-03-27', 'ATM Bersama - Januari'),
+(2, 6, 'AJ/ATM/2025/02', '2025-02', 20000000, 2200000, 22200000, 'paid', '2025-02-17', '2025-03-19', '2025-03-25', '2025-03-27', 'ATM Bersama - Februari'),
+(2, 6, 'AJ/ATM/2025/03', '2025-03', 20000000, 2200000, 22200000, 'paid', '2025-03-16', '2025-04-15', '2025-04-16', '2025-04-21', 'ATM Bersama - Maret'),
+(2, 6, 'AJ/ATM/2025/04', '2025-04', 20000000, 2200000, 22200000, 'paid', '2025-04-18', '2025-05-18', '2025-05-14', '2025-05-19', 'ATM Bersama - April'),
+(2, 6, 'AJ/ATM/2025/05', '2025-05', 20000000, 2200000, 22200000, 'paid', '2025-05-27', '2025-06-26', '2025-06-13', '2025-06-13', 'ATM Bersama - Mei'),
+(2, 6, 'AJ/ATM/2025/06', '2025-06', 20000000, 2200000, 22200000, 'paid', '2025-06-07', '2025-07-07', '2025-07-07', '2025-07-09', 'ATM Bersama - Juni'),
+(2, 6, 'AJ/ATM/2025/07', '2025-07', 20000000, 2200000, 22200000, 'paid', '2025-07-17', '2025-08-16', '2025-08-18', '2025-08-20', 'ATM Bersama - Juli'),
+(2, 6, 'AJ/ATM/2025/08', '2025-08', 20000000, 2200000, 22200000, 'paid', '2025-08-19', '2025-09-18', '2025-09-29', '2025-09-30', 'ATM Bersama - Agustus'),
+(2, 6, 'AJ/ATM/2025/09', '2025-09', 20000000, 2200000, 22200000, 'paid', '2025-09-20', '2025-10-20', '2025-10-02', '2025-10-03', 'ATM Bersama - September'),
+(2, 6, 'AJ/ATM/2025/10', '2025-10', 20000000, 2200000, 22200000, 'paid', '2025-10-20', '2025-11-19', '2025-11-03', '2025-11-17', 'ATM Bersama - Oktober'),
+(2, 6, 'AJ/ATM/2025/11', '2025-11', 20000000, 2200000, 22200000, 'paid', '2025-11-21', '2025-12-21', '2025-12-16', '2025-12-20', 'ATM Bersama - November'),
+(2, 6, 'AJ/ATM/2025/12', '2025-12', 20000000, 2200000, 22200000, 'paid', '2025-12-21', '2026-01-20', '2025-12-24', '2026-01-11', 'ATM Bersama - Desember');
+
+-- ============================================================================
+-- 7. TRANSACTIONS - Artajasa BI FAST 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+(2, 7, 'AJ/BIFAST/2025/01', '2025-01', 131019600, 14412156, 145431756, 'paid', '2025-02-08', '2025-03-10', '2025-02-19', '2025-02-22', 'BI FAST - Januari'),
+(2, 7, 'AJ/BIFAST/2025/02', '2025-02', 138758400, 15263424, 154021824, 'paid', '2025-02-26', '2025-03-28', '2025-04-08', '2025-04-09', 'BI FAST - Februari'),
+(2, 7, 'AJ/BIFAST/2025/03', '2025-03', 158587200, 17444592, 176031792, 'paid', '2025-03-27', '2025-04-26', '2025-04-28', '2025-04-29', 'BI FAST - Maret'),
+-- April & Mei: Tidak ada transaksi (BI FAST close)
+(2, 7, 'AJ/BIFAST/2025/06', '2025-06', 25864200, 2845062, 28709262, 'paid', '2025-07-07', '2025-08-06', '2025-08-01', '2025-08-08', 'BI FAST - Juni'),
+(2, 7, 'AJ/BIFAST/2025/07', '2025-07', 114871200, 12635832, 127507032, 'paid', '2025-07-28', '2025-08-27', '2025-10-02', '2025-10-03', 'BI FAST - Juli'),
+(2, 7, 'AJ/BIFAST/2025/08', '2025-08', 111104400, 12221484, 123325884, 'paid', '2025-08-30', '2025-09-29', '2025-09-17', '2025-09-18', 'BI FAST - Agustus'),
+(2, 7, 'AJ/BIFAST/2025/09', '2025-09', 116949600, 12864456, 129814056, 'paid', '2025-09-30', '2025-10-30', '2025-10-15', '2025-10-17', 'BI FAST - September'),
+(2, 7, 'AJ/BIFAST/2025/10', '2025-10', 122172600, 13438986, 135611586, 'paid', '2025-10-31', '2025-11-30', '2025-11-27', '2025-12-09', 'BI FAST - Oktober'),
+(2, 7, 'AJ/BIFAST/2025/11', '2025-11', 113245800, 12457038, 125702838, 'paid', '2025-11-30', '2025-12-30', '2025-12-30', '2026-01-11', 'BI FAST - November'),
+(2, 7, 'AJ/BIFAST/2025/12', '2025-12', 158433000, 17427630, 175860630, 'pending', '2025-12-31', '2026-01-30', NULL, NULL, 'BI FAST - Desember - Menunggu pembayaran');
+
+-- ============================================================================
+-- 8. TRANSACTIONS - Lintasarta Cloud 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+-- 2025 Cloud Transactions
+(3, 9, '25/0005749', '2025-01', 28900000, 3179000, 32089000, 'paid', '2025-01-09', '2025-02-08', '2025-04-08', '2025-05-29', 'Cloud eLos Dev - Januari'),
+(3, 10, '25/0005777', '2025-01', 54833333, 6031667, 60875000, 'paid', '2025-01-09', '2025-02-08', '2025-04-08', '2025-05-29', 'Managed HSM - Januari'),
+(3, 9, '25/0010721', '2025-02', 305161261, 33567739, 338739000, 'paid', '2025-02-01', '2025-03-03', '2025-04-08', '2025-04-21', 'Cloud eLos Dev - Jan-Feb'),
+(3, 8, '25/0010563', '2025-02', 158333333, 17416667, 175760000, 'paid', '2025-02-01', '2025-03-03', '2025-04-08', '2025-04-21', 'Cloud Switching - Jan-Feb'),
+(3, 9, '25/0026184', '2025-03', 255598761, 28115864, 283724625, 'paid', '2025-03-15', '2025-04-14', '2025-04-08', '2025-04-21', 'Cloud eLos Dev - Feb-Mar'),
+(3, 8, '25/0018510', '2025-03', 158333333, 17416667, 175760000, 'paid', '2025-03-15', '2025-04-14', '2025-04-08', '2025-04-21', 'Cloud Switching - Feb-Mar'),
+(3, 8, '25/0023930', '2025-04', 158333333, 17416667, 175760000, 'paid', '2025-03-28', '2025-04-27', '2025-05-08', '2025-05-16', 'Cloud Switching - Mar-Apr'),
+(3, 9, '25/0027317', '2025-04', 234411261, 25785239, 260206500, 'paid', '2025-04-20', '2025-05-20', '2025-07-07', '2025-07-14', 'Cloud eLos Dev - Mar-Apr'),
+(3, 9, '25/0030342', '2025-05', 234411261, 25785239, 260206500, 'paid', '2025-04-18', '2025-05-18', '2025-06-05', '2025-06-12', 'Cloud eLos Dev - Apr-May'),
+(3, 9, '25/0036955', '2025-06', 234411261, 25785239, 260206500, 'paid', '2025-05-19', '2025-06-18', '2025-07-07', '2025-07-14', 'Cloud eLos Dev - May-Jun'),
+(3, 8, '25/0041628', '2025-06', 223994623, 24639409, 248644032, 'paid', '2025-06-13', '2025-07-13', '2025-08-08', '2025-08-18', 'Cloud Switching + HSM - May-Jun'),
+(3, 9, '25/0044330', '2025-07', 234411261, 25785239, 260206500, 'paid', '2025-06-18', '2025-07-18', '2025-08-08', '2025-08-18', 'Cloud eLos Dev - Jun-Jul'),
+(3, 8, '25/043788', '2025-07', 169833333, 18681667, 188525000, 'paid', '2025-06-18', '2025-07-18', '2025-08-08', '2025-08-18', 'Cloud Switching - Jun-Jul'),
+(3, 9, '25/0054942', '2025-08', 234411261, 25785239, 260206500, 'paid', '2025-07-29', '2025-08-28', '2025-09-03', '2025-09-30', 'Cloud eLos Dev - Jul-Aug'),
+(3, 8, '25/0053392', '2025-08', 169833333, 18681667, 188525000, 'paid', '2025-07-29', '2025-08-28', '2025-09-03', '2025-09-30', 'Cloud Switching - Jul-Aug'),
+(3, 8, '25/0041629', '2025-05', 158333333, 17416667, 175760000, 'paid', '2025-06-13', '2025-07-13', '2025-09-08', '2025-09-30', 'Cloud Switching - Apr-May'),
+(3, 9, '25/0061246', '2025-09', 234411261, 25785239, 260206500, 'paid', '2025-08-31', '2025-09-30', '2025-10-07', '2025-10-14', 'Cloud eLos Dev - Aug-Sep'),
+(3, 8, '25/0061825', '2025-09', 169833333, 18681667, 188525000, 'paid', '2025-08-31', '2025-09-30', '2025-10-07', '2025-10-14', 'Cloud Switching - Aug-Sep'),
+(3, 8, '25/0068203', '2025-10', 169833333, 18681667, 188525000, 'paid', '2025-09-30', '2025-10-30', '2025-10-27', '2025-11-16', 'Cloud Switching - Sep-Oct'),
+(3, 9, '25/0067715', '2025-10', 313211262, 34453239, 347674501, 'paid', '2025-09-30', '2025-10-30', '2025-11-27', '2025-12-04', 'Cloud eLos Dev - Apr-Oct'),
+(3, 8, '25/0079917', '2025-11', 169833333, 18681667, 188525000, 'paid', '2025-10-31', '2025-11-30', '2025-11-27', '2025-12-04', 'Cloud Switching - Oct-Nov'),
+(3, 9, '25/0067715B', '2025-11', 246411261, 27105239, 273526500, 'paid', '2025-10-31', '2025-11-30', '2025-11-27', '2025-12-04', 'Cloud eLos Dev - Oct-Nov'),
+(3, 8, '25/0087378', '2025-12', 169833333, 18681667, 188525000, 'paid', '2025-11-30', '2025-12-30', '2025-12-23', '2026-01-11', 'Cloud Switching - Nov-Dec'),
+(3, 9, '25/0083293', '2025-12', 246411261, 27105239, 273526500, 'paid', '2025-11-30', '2025-12-30', '2025-12-23', '2026-01-11', 'Cloud eLos Dev - Nov-Dec');
+
+-- ============================================================================
+-- 9. TRANSACTIONS - eMobile 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+(4, 11, '25010014', '2025-01', 18750000, 2062500, 20812500, 'paid', '2025-01-14', '2025-02-13', '2025-02-05', '2025-02-07', 'SMS/USSD Gateway - 13 Jan - 12 Feb'),
+(4, 11, '25020017', '2025-02', 18750000, 2062500, 20812500, 'paid', '2025-02-12', '2025-03-14', '2025-02-19', '2025-03-10', 'SMS/USSD Gateway - 13 Feb - 12 Mar'),
+(4, 11, '25030054', '2025-03', 18750000, 2062500, 20812500, 'paid', '2025-02-12', '2025-03-14', '2025-03-15', '2025-03-10', 'SMS/USSD Gateway - 13 Mar - 12 Apr'),
+(4, 11, '25040010', '2025-04', 18750000, 2062500, 20812500, 'paid', '2025-04-07', '2025-05-07', '2025-04-28', '2025-04-30', 'SMS/USSD Gateway - 13 Apr - 12 May'),
+(4, 11, '25050001', '2025-05', 18750000, 2062500, 20812500, 'paid', '2025-04-29', '2025-05-29', '2025-05-13', '2025-05-17', 'SMS/USSD Gateway - 13 May - 12 Jun'),
+(4, 11, '25060013', '2025-06', 18750000, 2062500, 20812500, 'paid', '2025-05-21', '2025-06-20', '2025-06-07', '2025-06-13', 'SMS/USSD Gateway - 13 Jun - 12 Jul'),
+(4, 11, '25070010', '2025-07', 18750000, 2062500, 20812500, 'paid', '2025-06-18', '2025-07-18', '2025-07-09', '2025-07-20', 'SMS/USSD Gateway - 13 Jul - 12 Aug'),
+(4, 11, '25080012', '2025-08', 18750000, 2062500, 20812500, 'paid', '2025-08-02', '2025-09-01', '2025-08-18', '2025-08-25', 'SMS/USSD Gateway - 13 Aug - 12 Sep'),
+(4, 11, '25090007', '2025-09', 18750000, 2062500, 20812500, 'paid', '2025-09-02', '2025-10-02', '2025-09-17', '2025-09-18', 'SMS/USSD Gateway - 13 Sep - 12 Oct'),
+(4, 11, '25100011', '2025-10', 18750000, 2062500, 20812500, 'paid', '2025-10-02', '2025-11-01', '2025-10-17', '2025-11-07', 'SMS/USSD Gateway - 13 Oct - 12 Nov'),
+(4, 11, '25110005', '2025-11', 18750000, 2062500, 20812500, 'paid', '2025-11-04', '2025-12-04', '2025-11-27', '2025-12-09', 'SMS/USSD Gateway - 13 Nov - 12 Dec'),
+(4, 11, '25120001', '2025-12', 18750000, 2062500, 20812500, 'paid', '2025-11-30', '2025-12-30', '2025-12-16', '2025-12-19', 'SMS/USSD Gateway - 13 Dec - 12 Jan');
+
+-- ============================================================================
+-- 10. TRANSACTIONS - SPS E-Learning 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+(5, 12, 'SPS/2025/01', '2025-03', 37568455, 3756845, 41325300, 'paid', '2025-03-01', '2025-03-31', NULL, '2025-03-26', 'Cloud Server E-Learning'),
+(5, 12, 'SPS/2025/02', '2025-10', 72727273, 7272727, 80000000, 'paid', '2025-10-01', '2025-10-31', NULL, '2025-10-10', 'Annual Maintenance E-Learning');
+
+-- ============================================================================
+-- 11. TRANSACTIONS - Metrocom FDS 2025
+-- ============================================================================
+INSERT INTO transactions (vendor_id, service_id, invoice_no, period, nominal, ppn, total, status, invoice_date, due_date, memo_date, pay_date, notes) VALUES
+(6, 13, 'FDS/2025/T1', '2025-06', 813636364, 81363636, 895000000, 'paid', '2025-05-01', '2025-05-31', NULL, '2025-05-30', 'FDS Termin I 50%'),
+(6, 13, 'FDS/2025/T2', '2025-09', 813636364, 81363636, 895000000, 'paid', '2025-08-01', '2025-08-31', NULL, '2025-09-04', 'FDS Termin II 50%'),
+(6, 13, 'FDS/2025/API', '2025-09', 33300000, 3330000, 36630000, 'paid', '2025-09-13', '2025-10-13', NULL, '2025-09-29', 'Biaya Jasa Implementasi FDS API');
+
+-- ============================================================================
+-- 12. SETTINGS
 -- ============================================================================
 INSERT INTO settings (key, value, description) VALUES
 ('company_name', 'Bank SulutGo', 'Nama perusahaan'),
 ('division_name', 'Divisi Teknologi Informasi', 'Nama divisi'),
+('app_name', 'AKSARA', 'Nama aplikasi'),
+('app_fullname', 'Aplikasi Kontrol & Sistem Anggaran Realisasi', 'Nama lengkap aplikasi'),
 ('ppn_rate', '0.11', 'Tarif PPN (11%)'),
-('ppn_rate_2025', '0.12', 'Tarif PPN mulai 2025 (12%)'),
 ('reminder_days_before', '7', 'Hari sebelum jatuh tempo untuk reminder'),
 ('currency', 'IDR', 'Mata uang'),
-('fiscal_year_start', '01-01', 'Awal tahun fiskal');
-
--- ============================================================================
--- 7. NETWORK ASSETS
--- ============================================================================
-INSERT INTO network_assets (id, vendor_id, location, service_type, product_name, site_name, bandwidth, mrc, contract_no, sia_no) VALUES
-(1, 3, 'DC Sentul', 'IPVPN', 'IPVPN Backhaul', 'DC SENTUL BACKHAUL', '5120 Kbps', 11000000, 'LA/CORP/2015', '2015004308'),
-(2, 3, 'DC Sentul', 'Internet', 'Dedicated Internet', 'DC SENTUL INTERNET', '10240 Kbps', 5000000, 'LA/CORP/2017', '2017008018'),
-(3, 3, 'DC Sentul', 'IPVPN', 'IPVPN Extranet BI', 'DC SENTUL EXTRANET BI BACKUP', '512 Kbps', 4500000, 'LA/CORP/2018', '2018007518'),
-(4, 3, 'DC Sentul', 'IPVPN', 'IPVPN MPN-G2', 'DC SENTUL MPN-G2', '128 Kbps', 3100000, 'LA/CORP/2014', '2014003338'),
-(5, 3, 'DC Sentul', 'IPVPN', 'IPVPN Artajasa', 'DC SENTUL ARTAJASA', '2048 Kbps', 4600000, 'LA/CORP/2015', '2015005264'),
-(6, 3, 'DC Sentul', 'IPVPN', 'IPVPN ALTO', 'DC SENTUL ALTO', '128 Kbps', 3100000, 'LA/CORP/2018', '2018003444'),
-(7, 3, 'DRC Serpong', 'IPVPN', 'IPVPN Backhaul', 'DRC SERPONG BACKHAUL', '10240 Kbps', 8000000, 'LA/CORP/2021', '2021287806'),
-(8, 3, 'DRC Serpong', 'Internet', 'Dedicated Internet', 'DRC SERPONG INTERNET', '3000 Kbps', 3000000, 'LA/CORP/2021', '2021287807'),
-(9, 3, 'DRC Serpong', 'IPVPN', 'IPVPN Artajasa', 'DRC SERPONG ARTAJASA', '128 Kbps', 2600000, 'LA/CORP/2021', '2021287808'),
-(10, 3, 'DC Tekno BSD', 'Colocation', 'RackBasedArrear', 'DC TEKNO COLLOCATION', NULL, 12000000, 'SC100017493/LA/CORP/2023', '2022339827'),
-(11, 3, 'DC Jatiluhur', 'Colocation', 'RackBasedArrear', 'JATILUHUR COLLOCATION', NULL, 12000000, 'SC100017493/LA/CORP/2023', '2023369058');
-
--- ============================================================================
--- 8. CLOUD SERVERS
--- ============================================================================
-INSERT INTO cloud_servers (id, vendor_id, project_name, server_name, vcpu, ram_gb, storage_gb, os, firewall, price, mrc, contract_no, sia_no) VALUES
-(1, 3, 'Bank Sulutgo-Surrounding', 'Surrouding-1', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, 39650000, '0055 LA CORP 2022', '2022329062'),
-(2, 3, 'Bank Sulutgo-Surrounding', 'Surrouding-2', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(3, 3, 'Bank Sulutgo-Surrounding', 'Surrouding-3', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(4, 3, 'Bank Sulutgo-Surrounding', 'Surrouding-4', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(5, 3, 'Bank Sulutgo-Surrounding', 'Surrounding-5-Win', 8, 32, 1000, 'Windows 2019', 'Elite/L3', 8150000, NULL, '0055 LA CORP 2022', '2022329062'),
-(6, 3, 'Bank Sulutgo-Surrounding', 'Surrouding-6-New', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(7, 3, 'Bank Sulutgo-Surrounding', 'Surrounding-7-New', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(8, 3, 'Bank Sulutgo-Surrounding', 'Surrounding-8-New', 8, 32, 200, 'Ubuntu 22.04', 'Elite/L3', 4500000, NULL, '0055 LA CORP 2022', '2022329062'),
-(9, 3, 'Bank Sulutgo-SKAI', 'SKAI_3', 4, 16, 1000, 'Ubuntu 22.04', 'Elite/L3', 5855856, 5855856, '0055 LA CORP 2022', '2022330793'),
-(10, 3, 'Bank Sulutgo-HCMS', 'SERVER-HCMS-NEW', 4, 16, 512, 'Ubuntu 22.04', 'Elite/L3', 5405405, 5405405, '0055 LA CORP 2022', '2022336660'),
-(11, 3, 'Bank Sulutgo-Umum', 'PROD-FRONTEND-Server1-Ubuntu', 16, 32, 50, 'Ubuntu 22.04', 'Elite/L3', 2500000, 28000000, '0055 LA CORP 2022', '2022329888'),
-(12, 3, 'Bank Sulutgo-Umum', 'PROD-FRONTEND-Server2-Ubuntu', 16, 32, 50, 'Ubuntu 22.04', 'Elite/L3', 2500000, NULL, '0055 LA CORP 2022', '2022329888'),
-(13, 3, 'Bank Sulutgo-Umum', 'Prod-Backend-Winser2016', 16, 32, 50, 'Windows 2016', 'Elite/L3', 2500000, NULL, '0055 LA CORP 2022', '2022329888'),
-(14, 3, 'Bank Sulutgo-App-ELOS', 'Agent-2', 8, 16, 100, 'Windows Server', 'Elite/L3', 8000000, 32000000, '0055 LA CORP 2022', '2022340001'),
-(15, 3, 'Bank Sulutgo-App-ELOS', 'Agent-1', 8, 16, 100, 'Windows Server', 'Elite/L3', 8000000, NULL, '0055 LA CORP 2022', '2022340001'),
-(16, 3, 'Bank Sulutgo-App-ELOS', 'Server-DB-Winser', 8, 16, 100, 'Windows Server', 'Elite/L3', 8000000, NULL, '0055 LA CORP 2022', '2022340001'),
-(17, 3, 'Bank Sulutgo-App-ELOS', 'Server-API-Winser', 8, 16, 100, 'Windows Server', 'Elite/L3', 8000000, NULL, '0055 LA CORP 2022', '2022340001');
+('fiscal_year_start', '01-01', 'Awal tahun fiskal'),
+('current_fiscal_year', '2025', 'Tahun fiskal aktif');
